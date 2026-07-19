@@ -7,6 +7,46 @@ const PORT = process.env.PORT || 3000;
 const DATA_DIR = process.env.DATA_DIR || (fs.existsSync("/data") ? "/data" : __dirname);
 const SUBMISSIONS_FILE = path.join(DATA_DIR, "submissions.jsonl");
 const ADMIN_KEY = process.env.ADMIN_KEY || "";
+const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || "tumaysolak@gmail.com";
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+async function notifyByEmail(entry) {
+  if (!RESEND_API_KEY) return;
+  try {
+    const r = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Ninety <onboarding@resend.dev>",
+        to: [NOTIFY_EMAIL],
+        reply_to: entry.email,
+        subject: `Ninety form: ${entry.name}${entry.company ? " (" + entry.company + ")" : ""}`,
+        html:
+          `<h2 style="font-family:sans-serif">Yeni iletişim formu gönderimi</h2>` +
+          `<table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">` +
+          `<tr><td style="padding:4px 12px 4px 0"><b>Ad</b></td><td>${escapeHtml(entry.name)}</td></tr>` +
+          `<tr><td style="padding:4px 12px 4px 0"><b>E-posta</b></td><td>${escapeHtml(entry.email)}</td></tr>` +
+          `<tr><td style="padding:4px 12px 4px 0"><b>Şirket</b></td><td>${escapeHtml(entry.company)}</td></tr>` +
+          `<tr><td style="padding:4px 12px 4px 0"><b>Dil</b></td><td>${escapeHtml(entry.lang)}</td></tr>` +
+          `<tr><td style="padding:4px 12px 4px 0"><b>Tarih</b></td><td>${escapeHtml(entry.ts)}</td></tr>` +
+          `</table>` +
+          `<p style="font-family:sans-serif;font-size:14px;white-space:pre-wrap;border-left:3px solid #1D3FD8;padding-left:12px">${escapeHtml(entry.message)}</p>`,
+      }),
+    });
+    if (!r.ok) console.error("resend failed", r.status, await r.text());
+  } catch (e) {
+    console.error("resend error", e);
+  }
+}
 
 app.use(express.json({ limit: "50kb" }));
 app.use(express.static(path.join(__dirname, "public"), { maxAge: "1h" }));
@@ -57,6 +97,7 @@ app.post("/api/contact", (req, res) => {
     return res.status(500).json({ ok: false, error: "server_error" });
   }
   console.log("[contact]", entry.email, entry.company);
+  notifyByEmail(entry); // fire and forget
   res.json({ ok: true });
 });
 

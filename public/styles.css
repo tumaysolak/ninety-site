@@ -163,6 +163,11 @@ form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   padding: 28px 6vw; color: var(--ink-soft); font-size: 0.9rem; flex-wrap: wrap; gap: 10px;
 }
 .foot-brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; color: var(--ink); margin-right: 12px; }
+.foot-project { display: block; margin-top: 6px; font-size: 0.8rem; opacity: 0.75; }
+.project-note {
+  margin-top: 18px; font-size: 0.82rem; color: var(--ink-soft);
+  border-left: 3px solid var(--accent); padding-left: 12px; opacity: 0.85;
+}
 
 /* Reveal */
 .reveal { transform: translateY(18px); opacity: 0.001; transition: transform 0.7s ease, opacity 0.7s ease; }

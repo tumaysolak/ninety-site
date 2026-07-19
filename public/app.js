@@ -58,7 +58,9 @@
       "form.ok": "Thank you. We will get back to you within two working days.",
       "form.err": "Something went wrong. Please try again, or email hello@ninety.studio.",
       "form.missing": "Please fill in your name, email and message.",
-      "footer.tag": "A global AI transformation studio."
+      "footer.tag": "A global AI transformation studio.",
+      "footer.project": "This site is a Micro MBA in AI course project.",
+      "contact.project": "Ninety is a Micro MBA in AI course project."
     },
     tr: {
       "nav.method": "Metot",
@@ -116,7 +118,9 @@
       "form.ok": "Teşekkürler. İki iş günü içinde dönüş yapacağız.",
       "form.err": "Bir şeyler ters gitti. Lütfen tekrar deneyin ya da hello@ninety.studio adresine yazın.",
       "form.missing": "Lütfen ad, e-posta ve mesaj alanlarını doldurun.",
-      "footer.tag": "Global bir AI dönüşüm stüdyosu."
+      "footer.tag": "Global bir AI dönüşüm stüdyosu.",
+      "footer.project": "Bu site bir Micro MBA in AI eğitimi projesidir.",
+      "contact.project": "Ninety, bir Micro MBA in AI eğitimi projesidir."
     }
   };
 
