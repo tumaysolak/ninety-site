@@ -164,6 +164,8 @@ form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 }
 .foot-brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; color: var(--ink); margin-right: 12px; }
 .foot-project { display: block; margin-top: 6px; font-size: 0.8rem; opacity: 0.75; }
+.foot-links { display: flex; gap: 22px; font-weight: 500; }
+.foot-links a:hover { color: var(--accent); }
 .project-note {
   margin-top: 18px; font-size: 0.82rem; color: var(--ink-soft);
   border-left: 3px solid var(--accent); padding-left: 12px; opacity: 0.85;

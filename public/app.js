@@ -21,7 +21,7 @@
       "reality.s3": "of enterprise AI pilots show no measurable P&L impact. (MIT)",
       "reality.s4": "of organizations reach high performance, 5%+ EBIT impact from AI. That is the honest bar. (McKinsey)",
       "method.h2": "One sprint. Three phases. Twelve artifacts.",
-      "method.intro": "Ninety runs a single disciplined 90-day operating sprint inside your organization, built on published enterprise frameworks, not vendor decks.",
+      "method.intro": "Ninety AI runs a single disciplined 90-day operating sprint inside your organization, built on published enterprise frameworks, not vendor decks.",
       "method.p1days": "DAYS 1–30",
       "method.p1h": "Map",
       "method.p1p": "Real usage inventory including shadow AI. Leadership perception vs reality test. Value area selection capped at three, with a written not-to-do list. Every executive commits to one visible AI routine.",
@@ -56,11 +56,12 @@
       "form.message": "Where does AI stand in your organization today?",
       "form.submit": "Send",
       "form.ok": "Thank you. We will get back to you within two working days.",
-      "form.err": "Something went wrong. Please try again, or email hello@ninety.studio.",
+      "form.err": "Something went wrong. Please try again.",
       "form.missing": "Please fill in your name, email and message.",
       "footer.tag": "A global AI transformation studio.",
+      "footer.privacy": "Privacy",
       "footer.project": "This site is a Micro MBA in AI course project.",
-      "contact.project": "Ninety is a Micro MBA in AI course project."
+      "contact.project": "Ninety AI is a Micro MBA in AI course project."
     },
     tr: {
       "nav.method": "Metot",
@@ -81,7 +82,7 @@
       "reality.s3": "kurumsal AI pilotu ölçülebilir K&Z etkisi gösteremiyor. (MIT)",
       "reality.s4": "kurum yüksek performansa ulaşıyor: AI'dan %5+ EBIT etkisi. Dürüst çıta budur. (McKinsey)",
       "method.h2": "Tek sprint. Üç faz. On iki teslimat.",
-      "method.intro": "Ninety, kurumunuzun içinde tek ve disiplinli bir 90 günlük operasyon sprinti yürütür. Tedarikçi sunumlarına değil, yayımlanmış kurumsal çerçevelere dayanır.",
+      "method.intro": "Ninety AI, kurumunuzun içinde tek ve disiplinli bir 90 günlük operasyon sprinti yürütür. Tedarikçi sunumlarına değil, yayımlanmış kurumsal çerçevelere dayanır.",
       "method.p1days": "GÜN 1–30",
       "method.p1h": "Haritala",
       "method.p1p": "Gölge AI dahil gerçek kullanım envanteri. Liderlik algı-gerçeklik testi. En fazla üç değer alanı seçimi ve yazılı yapılmayacaklar listesi. Her yönetici görünür bir AI rutini taahhüt eder.",
@@ -116,11 +117,12 @@
       "form.message": "AI bugün kurumunuzda nerede duruyor?",
       "form.submit": "Gönder",
       "form.ok": "Teşekkürler. İki iş günü içinde dönüş yapacağız.",
-      "form.err": "Bir şeyler ters gitti. Lütfen tekrar deneyin ya da hello@ninety.studio adresine yazın.",
+      "form.err": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
       "form.missing": "Lütfen ad, e-posta ve mesaj alanlarını doldurun.",
       "footer.tag": "Global bir AI dönüşüm stüdyosu.",
+      "footer.privacy": "Gizlilik",
       "footer.project": "Bu site bir Micro MBA in AI eğitimi projesidir.",
-      "contact.project": "Ninety, bir Micro MBA in AI eğitimi projesidir."
+      "contact.project": "Ninety AI, bir Micro MBA in AI eğitimi projesidir."
     }
   };
 
@@ -143,8 +145,8 @@
       el.classList.toggle("on", el.getAttribute("data-lang-opt") === l);
     });
     document.title = l === "tr"
-      ? "Ninety. 90 günde AI dönüşümü."
-      : "Ninety. AI transformation in 90 days.";
+      ? "Ninety AI. 90 günde AI dönüşümü."
+      : "Ninety AI. AI transformation in 90 days.";
   }
 
   document.getElementById("langToggle").addEventListener("click", function () {
@@ -200,6 +202,8 @@
           note.className = "form-note ok";
           note.textContent = dict["form.ok"];
           form.reset();
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "contact_form_submit" });
         } else {
           note.className = "form-note err";
           note.textContent = dict["form.err"];

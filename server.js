@@ -26,10 +26,10 @@ async function notifyByEmail(entry) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Ninety <onboarding@resend.dev>",
+        from: "Ninety AI <onboarding@resend.dev>",
         to: [NOTIFY_EMAIL],
         reply_to: entry.email,
-        subject: `Ninety form: ${entry.name}${entry.company ? " (" + entry.company + ")" : ""}`,
+        subject: `Ninety AI form: ${entry.name}${entry.company ? " (" + entry.company + ")" : ""}`,
         html:
           `<h2 style="font-family:sans-serif">Yeni iletişim formu gönderimi</h2>` +
           `<table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">` +
